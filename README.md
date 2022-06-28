@@ -13,7 +13,7 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
 
 * Clone repository and build image.
 
-      git clone https://github.com/kylemanna/docker-openvpn
+      git clone https://github.com/Vladislav-ctrl/docker-openvpn-ldap
       cd docker-openvpn/
       docker build -t myopenvpn .
 
