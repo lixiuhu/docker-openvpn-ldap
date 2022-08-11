@@ -14,7 +14,7 @@ a corresponding [Digital Ocean Community Tutorial](http://bit.ly/1AGUZkq).
 * Clone repository and build image.
 
       git clone https://github.com/Vladislav-ctrl/docker-openvpn-ldap
-      cd docker-openvpn/
+      cd docker-openvpn-ldap/
       docker build -t myopenvpn .
 
 * Initialize the container that will hold the configuration files
