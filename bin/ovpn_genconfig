@@ -167,13 +167,17 @@ OVPN_ROUTES=()
 OVPN_SERVER=192.168.255.0/24
 OVPN_SERVER_URL=''
 OVPN_TLS_CIPHER=''
+OVPN_LDAP=0
 
 # Import existing configuration if present
 [ -r "$OVPN_ENV" ] && source "$OVPN_ENV"
 
 # Parse arguments
-while getopts ":a:e:E:C:T:r:s:du:bcp:n:k:DNm:f:tz2" opt; do
+while getopts ":a:e:E:C:T:r:s:du:bcp:n:k:DNm:f:tz2:l" opt; do
     case $opt in
+	l)
+	   OVPN_LDAP=1
+	   ;;
         a)
             OVPN_AUTH="$OPTARG"
             ;;
@@ -407,6 +411,14 @@ fi
 if diff -q "${bak:-}" "$conf" 2>/dev/null; then
     echo "Removing duplicate back-up: $bak"
     rm -fv "$bak"
+fi
+
+
+if [ "$OVPN_LDAP" == "1" ]; then
+    echo "verify-client-cert none" >> "$conf"
+    mkdir -p /etc/openvpn/conf
+    echo "plugin /usr/lib/openvpn/plugins/openvpn-auth-ldap.so /etc/openvpn/conf/auth-ldap.conf" >> "$conf"
+    cp /etc/example-ldap.conf /etc/openvpn/conf/auth-ldap.conf
 fi
 
 echo "Successfully generated config"

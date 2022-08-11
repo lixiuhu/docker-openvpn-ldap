@@ -27,5 +27,7 @@ CMD ["ovpn_run"]
 ADD ./bin /usr/local/bin
 RUN chmod a+x /usr/local/bin/*
 
+ADD ./ldap-config-example /etc/openvpn/config
+
 # Add support for OTP authentication using a PAM module
 ADD ./otp/openvpn /etc/pam.d/
