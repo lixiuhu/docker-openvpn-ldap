@@ -33,11 +33,16 @@ get_client_config() {
     mode="$1"
     echo "
 client
-nobind
 dev $OVPN_DEVICE
-remote-cert-tls server
-
-remote $OVPN_CN $OVPN_PORT $OVPN_PROTO"
+remote $OVPN_CN $OVPN_PORT $OVPN_PROTO
+resolv-retry infinite
+nobind
+auth-nocache
+auth-user-pass
+reneg-sec 0
+proto udp
+explicit-exit-notify 1
+comp-lzo no"
     if [ "$OVPN_PROTO" == "udp6" ]; then
         echo "remote $OVPN_CN $OVPN_PORT udp"
     fi
