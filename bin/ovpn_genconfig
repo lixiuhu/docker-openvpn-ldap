@@ -175,9 +175,9 @@ OVPN_LDAP=0
 # Parse arguments
 while getopts ":a:e:E:C:T:r:s:du:bcp:n:k:DNm:f:tz2:l" opt; do
     case $opt in
-	l)
-	   OVPN_LDAP=1
-	   ;;
+	    l)
+	        OVPN_LDAP=1
+	        ;;
         a)
             OVPN_AUTH="$OPTARG"
             ;;
