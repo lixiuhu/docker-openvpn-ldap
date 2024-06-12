@@ -1,7 +1,7 @@
 # Original credit: https://github.com/jpetazzo/dockvpn
 
 # Smallest base image
-FROM alpine:latest
+FROM registry.cn-shanghai.aliyuncs.com/public-kubernetes/images:alpine
 
 LABEL maintainer="Kyle Manna <kyle@kylemanna.com>"
 
